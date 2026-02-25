@@ -5,6 +5,7 @@ set -euo pipefail
 # --- Configuration ---
 WORK_DIR=$(mktemp -d)
 trap 'rm -rf "$WORK_DIR"' EXIT
+mkdir -p "output"
 
 check_deps() {
     for tool in yt-dlp ffmpeg ffprobe; do
@@ -22,7 +23,7 @@ process_file() {
     
     # Detect Source Codec
     local codec=$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 "$input_file")
-    local final_output="${base_name}.m4a"
+    local final_output="output/${base_name}.m4a"
     
     if [[ -f "$final_output" ]]; then
         echo "Skipping: $final_output (exists)"
