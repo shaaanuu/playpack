@@ -2,6 +2,13 @@
 
 A minimal, POSIX-compliant Bash script to archive YouTube audio in its highest native fidelity. In m4a.
 
+## Disclaimer
+
+This project is deprecated, use the default yt-dlp to get the same result.
+```bash
+yt-dlp -x -f "ba[ext=m4a]" --embed-metadata --embed-thumbnail --js-runtimes bun "URL"
+```
+
 ### Core Philosophy
 
 * **Zero Transcoding:** Audio is never re-encoded. No generation loss.
